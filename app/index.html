@@ -6,8 +6,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -22,13 +22,28 @@
     <!-- Add your site or application content here -->
     <my-nav></my-nav>
 
-    <div class="my-container">
-    <div ng-view></div>
+    <div>
+      <div class="col-md-2">
+        <br>
+        <br>
+        <br>
+        <br>
+        {{all.getDate()}}
+      </div>
+      <div class="col-md-8">
+        <div ng-view></div>
+      </div>
+      <div class="col-md-2">
+        yo
+      </div>
     </div>
 
     <div class="footer">
       <div class="my-container">
-        <p><span class="glyphicon glyphicon-heart"></span> :: Icons von <a href="http://glyphicons.com/">GLYPHICONS</a></p>
+        <p>
+          <span class="glyphicon glyphicon-heart"></span>
+          :: Icons von <a href="http://glyphicons.com/">GLYPHICONS</a>
+        </p>
       </div>
     </div>
 
@@ -48,22 +63,22 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="views/app.js"></script>
-        <script src="views/main/main.controller.js"></script>
-        <script src="views/culture/culture.controller.js"></script>
-        <script src="views/education/education.controller.js"></script>
-        <script src="views/financials/financials.controller.js"></script>
-        <script src="views/military/military.controller.js"></script>
-        <script src="views/politics/politics.controller.js"></script>
-        <script src="views/population/population.controller.js"></script>
-        <script src="views/production/production.controller.js"></script>
-        <script src="views/religion/religion.controller.js"></script>
-        <script src="views/research/research.controller.js"></script>
-        <script src="views/navigation/navigation.controller.js"></script>
-        <script src="views/navigation/navigation.directive.js"></script>
-        <script src="views/options/options.controller.js"></script>
-        <script src="views/x/all.controller.js"></script>
-        <!-- endbuild -->
-</body>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="views/app.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/culture/culture.controller.js"></script>
+    <script src="views/education/education.controller.js"></script>
+    <script src="views/financials/financials.controller.js"></script>
+    <script src="views/military/military.controller.js"></script>
+    <script src="views/politics/politics.controller.js"></script>
+    <script src="views/population/population.controller.js"></script>
+    <script src="views/production/production.controller.js"></script>
+    <script src="views/religion/religion.controller.js"></script>
+    <script src="views/research/research.controller.js"></script>
+    <script src="views/navigation/navigation.controller.js"></script>
+    <script src="views/navigation/navigation.directive.js"></script>
+    <script src="views/options/options.controller.js"></script>
+    <script src="views/x/all.controller.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>

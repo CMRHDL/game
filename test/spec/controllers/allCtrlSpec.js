@@ -17,11 +17,8 @@ describe('Controller: AllCtrl', function () {
     });
   }));
 
-  it('should create 100 citizens on load', function () {
+  it('should create 100 citizens on load and add 10 more', function () {
     expect(AllCtrl.citizens.length).toBe(100);
-  });
-
-  it('should create 110 citizens', function () {
     AllCtrl.createNewCitizens(10);
     expect(AllCtrl.citizens.length).toBe(110);
     expect(AllCtrl.citizens[AllCtrl.citizens.length-1].id).toBe(110);
@@ -37,11 +34,21 @@ describe('Controller: AllCtrl', function () {
     expect(typeof AllCtrl.getAvgAge()).toBe('number');
   });
 
-  it('should return AvgAge', function () {
+  it('should return educationCount', function () {
     expect(Object.keys(AllCtrl.getEducationCount()).length).toBe(3);
   });
 
-  it('should return AvgAge', function () {
+  it('should return religiousCount', function () {
     expect(Object.keys(AllCtrl.getReligiousCount()).length).toBe(3);
+  });
+
+  it('should return current Date', function () {
+    expect(AllCtrl.getDate()).toBe('Summer 1444');
+    AllCtrl.advanceTime();
+    expect(AllCtrl.getDate()).toBe('Autumn 1444');
+    AllCtrl.advanceTime();
+    expect(AllCtrl.getDate()).toBe('Winter 1445');
+    AllCtrl.advanceTime();
+    expect(AllCtrl.getDate()).toBe('Spring 1445');
   });
 });
