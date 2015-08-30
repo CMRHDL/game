@@ -11,6 +11,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -34,7 +35,36 @@
         <div ng-view></div>
       </div>
       <div class="col-md-2">
-        yo
+        <br>
+        <br>
+        <br>
+        <!-- <canvas 
+          id="line" 
+          class="chart chart-line" 
+          chart-click="onClick" 
+          chart-data="all.citizens"
+          chart-labels="labels" 
+          chart-legend="true" 
+          chart-series="series"
+          >
+        </canvas> -->
+        Religion:
+        <canvas id="pie" class="chart-base"
+          chart-type="all.chartType"
+          chart-data="all.reliData" 
+          chart-labels="all.reliLabels"
+          chart-legend="true"
+        >
+        </canvas>
+        Education:
+        <canvas id="pie" class="chart-base"
+          chart-type="all.chartType"
+          chart-data="all.eduData" 
+          chart-labels="all.eduLabels"
+          chart-legend="true"
+        >
+        </canvas> 
+        <button type="button" class="btn btn-warning" ng-click="all.changeChartType()">Change Charttype</button>
       </div>
     </div>
 
@@ -60,6 +90,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -71,9 +71,9 @@
     function getReligion() {
       roll = randomNumber(3);
       switch (roll) {
-        case 1: return 'none';
+        case 1: return 'atheist';
         case 2: return 'christian';
-        case 3: return 'scientology';
+        case 3: return 'reformed';
       }
     }
     function getHappyness() {
@@ -83,16 +83,16 @@
 
     function getReligiousCount() {
       var religionCounter = {};
-      religionCounter.none = 0;
+      religionCounter.atheist = 0;
       religionCounter.christian = 0;
-      religionCounter.scientology = 0;
+      religionCounter.reformed = 0;
       all.citizens.forEach(function(entry){
-        if(entry.religion === 'none') {
-          religionCounter.none++;
+        if(entry.religion === 'atheist') {
+          religionCounter.atheist++;
         } else if(entry.religion === 'christian') {
           religionCounter.christian++;
-        } else if(entry.religion === 'scientology') {
-          religionCounter.scientology++;
+        } else if(entry.religion === 'reformed') {
+          religionCounter.reformed++;
         }
       });
       return religionCounter;
@@ -126,5 +126,38 @@
     function randomNumber(to) {
       return Math.floor((Math.random() * to) + 1);
     }
-  }
+
+    all.reliData = getReliArry()[0];
+    all.reliLabels = getReliArry()[1];
+    function getReliArry() {
+      var arr = [];
+      var labels = [];
+      var obj = getReligiousCount()
+      for(var key in obj) {
+        arr.push(obj[key]);
+        labels.push(key);
+      }
+      return [arr, labels];
+    }
+
+    all.eduData = getEduArry()[0];
+    all.eduLabels = getEduArry()[1];
+    function getEduArry() {
+      var arr = [];
+      var labels = [];
+      var obj = getEducationCount()
+      for(var key in obj) {
+        arr.push(obj[key]);
+        labels.push(key);
+      }
+      return [arr, labels];
+    }
+
+    all.chartType = 'Pie';
+    all.changeChartType = changeChartType;
+    function changeChartType() {
+    all.chartType = all.chartType === 'PolarArea' ?
+            'Pie' : 'PolarArea';
+      }
+    }
 })();
