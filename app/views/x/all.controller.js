@@ -2,8 +2,8 @@
   'use strict';
   angular.module('funApp').controller('AllCtrl', AllCtrl);
 
-  //AllCtrl. = [ '' ];
-  function AllCtrl() {
+  AllCtrl.$inject = [ 'chart', 'citizen' ];
+  function AllCtrl(chart, citizen) {
     var all = this;
 
     all.citizenCount = 1;
@@ -19,6 +19,9 @@
     var education, age, religion, happyness, roll;
     var season = 'Summer';
     var year = 1444;
+
+    var educations = ['none', 'basic', 'high'];
+    var religions = ['reformed', 'christian', 'protestant'];
 
     init();
     function init(){
@@ -45,9 +48,12 @@
 
     function createNewCitizens(count) {
       for(var i = 1; i <= count; i++) {
-        all.citizens.push({id: all.citizenCount, age: getAge(), education: getEducation(), religion: getReligion(), happyness: getHappyness()});
+        // all.citizens.push({id: all.citizenCount, age: getAge(), education: getEducation(), religion: getReligion(), happyness: getHappyness()});
+        // all.citizens.push(new Citizen(all.citizenCount, getAge(), getEducation(), getReligion(), getHappyness()));
+        all.citizens.push(citizen.create(all.citizenCount, getAge(), getEducation(), getReligion(), getHappyness()));
         all.citizenCount++;
       }
+      console.log(all.citizens);
     }
 
     function getDate() {
@@ -69,12 +75,8 @@
       return roll;
     }
     function getReligion() {
-      roll = randomNumber(3);
-      switch (roll) {
-        case 1: return 'atheist';
-        case 2: return 'christian';
-        case 3: return 'reformed';
-      }
+      roll = randomNumber(religions.length);
+      return religions[roll-1]
     }
     function getHappyness() {
       roll = randomNumber(10);
@@ -83,34 +85,22 @@
 
     function getReligiousCount() {
       var religionCounter = {};
-      religionCounter.atheist = 0;
-      religionCounter.christian = 0;
-      religionCounter.reformed = 0;
+      for (var i = 0, len = religions.length; i < len; i++) {
+          religionCounter[religions[i]] = 0;
+      }
       all.citizens.forEach(function(entry){
-        if(entry.religion === 'atheist') {
-          religionCounter.atheist++;
-        } else if(entry.religion === 'christian') {
-          religionCounter.christian++;
-        } else if(entry.religion === 'reformed') {
-          religionCounter.reformed++;
-        }
+        religionCounter[entry.religion]++;
       });
       return religionCounter;
     }
     
     function getEducationCount() {
       var eduCounter = {};
-      eduCounter.none = 0;
-      eduCounter.basic = 0;
-      eduCounter.high = 0;
+      for (var i = 0, len = educations.length; i < len; i++) {
+          eduCounter[educations[i]] = 0;
+      }
       all.citizens.forEach(function(entry){
-        if(entry.education === 'none') {
-          eduCounter.none++;
-        } else if(entry.education === 'basic') {
-          eduCounter.basic++;
-        } else if(entry.education === 'high') {
-          eduCounter.high++;
-        }
+        eduCounter[entry.education]++;
       });
       return eduCounter;
     }
@@ -127,31 +117,10 @@
       return Math.floor((Math.random() * to) + 1);
     }
 
-    all.reliData = getReliArry()[0];
-    all.reliLabels = getReliArry()[1];
-    function getReliArry() {
-      var arr = [];
-      var labels = [];
-      var obj = getReligiousCount()
-      for(var key in obj) {
-        arr.push(obj[key]);
-        labels.push(key);
-      }
-      return [arr, labels];
-    }
-
-    all.eduData = getEduArry()[0];
-    all.eduLabels = getEduArry()[1];
-    function getEduArry() {
-      var arr = [];
-      var labels = [];
-      var obj = getEducationCount()
-      for(var key in obj) {
-        arr.push(obj[key]);
-        labels.push(key);
-      }
-      return [arr, labels];
-    }
+    all.reliData = chart.getDataArray(getReligiousCount());
+    all.reliLabels = chart.getDataLabel(getReligiousCount());
+    all.eduData = chart.getDataArray(getEducationCount());
+    all.eduLabels = chart.getDataLabel(getEducationCount());
 
     all.chartType = 'Pie';
     all.changeChartType = changeChartType;
