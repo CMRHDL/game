@@ -1,14 +1,14 @@
 <div class="jumbotron">
   <h1>Overview</h1>
   <p> Religion<br>
-    Protestant: {{all.getReligiousCount().protestant}}<br>
-    Christs: {{all.getReligiousCount().christian}}<br>
-    Reformed: {{all.getReligiousCount().reformed}}<br>
+    Protestant: {{all.getCount('religion').protestant}}<br>
+    Christs: {{all.getCount('religion').christian}}<br>
+    Reformed: {{all.getCount('religion').reformed}}<br>
   </p>
   <p>Education<br>
-    No Education: {{all.getEducationCount().none}}<br>
-    Basic Education: {{all.getEducationCount().basic}}<br>
-    High Education: {{all.getEducationCount().high}}<br>
+    No Education: {{all.getCount('education').none}}<br>
+    Basic Education: {{all.getCount('education').basic}}<br>
+    High Education: {{all.getCount('education').high}}<br>
   </p>
   <p>Average Age: {{all.getAvgAge()}}</p>
 

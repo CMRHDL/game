@@ -12,9 +12,8 @@
     all.advanceTime = advanceTime;
     all.createNewCitizens = createNewCitizens;
     all.getAvgAge = getAvgAge;
+    all.getCount = getCount;
     all.getDate = getDate;
-    all.getEducationCount = getEducationCount;
-    all.getReligiousCount = getReligiousCount;
 
     var education, age, religion, happyness, roll;
     var season = 'Summer';
@@ -70,41 +69,33 @@
         return 'high';
       }
     }
+
     function getAge() {
       roll = randomNumber(50);
       return roll;
     }
+
     function getReligion() {
       roll = randomNumber(religions.length);
       return religions[roll-1]
     }
+
     function getHappyness() {
       roll = randomNumber(10);
       return roll;
     }
 
-    function getReligiousCount() {
-      var religionCounter = {};
-      for (var i = 0, len = religions.length; i < len; i++) {
-          religionCounter[religions[i]] = 0;
-      }
+    function getCount(prop) {
+      var counter = {};
       all.citizens.forEach(function(entry){
-        religionCounter[entry.religion]++;
+        if(!counter[entry[prop]]) {
+          counter[entry[prop]] = 0;
+        }
+        counter[entry[prop]]++;
       });
-      return religionCounter;
+      return counter;
     }
-    
-    function getEducationCount() {
-      var eduCounter = {};
-      for (var i = 0, len = educations.length; i < len; i++) {
-          eduCounter[educations[i]] = 0;
-      }
-      all.citizens.forEach(function(entry){
-        eduCounter[entry.education]++;
-      });
-      return eduCounter;
-    }
-    
+
     function getAvgAge() {
       var totalAge = 0;
       all.citizens.forEach(function(entry){
@@ -117,10 +108,10 @@
       return Math.floor((Math.random() * to) + 1);
     }
 
-    all.reliData = chart.getDataArray(getReligiousCount());
-    all.reliLabels = chart.getDataLabel(getReligiousCount());
-    all.eduData = chart.getDataArray(getEducationCount());
-    all.eduLabels = chart.getDataLabel(getEducationCount());
+    all.reliData = chart.getDataArray(getCount('religion'));
+    all.reliLabels = chart.getDataLabel(getCount('religion'));
+    all.eduData = chart.getDataArray(getCount('education'));
+    all.eduLabels = chart.getDataLabel(getCount('education'));
 
     all.chartType = 'Pie';
     all.changeChartType = changeChartType;

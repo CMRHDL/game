@@ -7,7 +7,7 @@
         var vm = this;
 
         // variables
-        
+
 
         // public functions
         vm.someFunctionOne = someFunctionOne;
