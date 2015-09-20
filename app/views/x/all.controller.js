@@ -88,10 +88,7 @@
     function getCount(prop) {
       var counter = {};
       all.citizens.forEach(function(entry){
-        if(!counter[entry[prop]]) {
-          counter[entry[prop]] = 0;
-        }
-        counter[entry[prop]]++;
+        counter[entry[prop]] = counter[entry[prop]] ? counter[entry[prop]] + 1 : 1;
       });
       return counter;
     }

@@ -35,11 +35,11 @@ describe('Controller: AllCtrl', function () {
   });
 
   it('should return educationCount', function () {
-    expect(Object.keys(AllCtrl.getEducationCount()).length).toBe(3);
+    expect(Object.keys(AllCtrl.getCount('education')).length).toBe(3);
   });
 
   it('should return religiousCount', function () {
-    expect(Object.keys(AllCtrl.getReligiousCount()).length).toBe(3);
+    expect(Object.keys(AllCtrl.getCount('religion')).length).toBe(3);
   });
 
   it('should return current Date', function () {
