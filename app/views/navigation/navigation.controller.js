@@ -13,16 +13,16 @@
 
         nav.tabs = [
           {visibleName: 'Overview', name: 'overview', css: 'glyphicon glyphicon-align-justify'},
-          {visibleName: 'Culture', name: 'culture', css: 'glyphicon glyphicon-music'},
-          {visibleName: 'Education', name: 'education', css: 'glyphicon glyphicon-education'},
+          //{visibleName: 'Culture', name: 'culture', css: 'glyphicon glyphicon-music'},
+          //{visibleName: 'Education', name: 'education', css: 'glyphicon glyphicon-education'},
           {visibleName: 'Financials', name: 'financials', css: 'glyphicon glyphicon-usd'},
-          {visibleName: 'Military', name: 'military', css: 'glyphicon glyphicon-tower'},
+          //{visibleName: 'Military', name: 'military', css: 'glyphicon glyphicon-tower'},
           {visibleName: 'Politics', name: 'politics', css: 'glyphicon glyphicon-envelope'},
-          {visibleName: 'Population', name: 'population', css: 'glyphicon glyphicon-cutlery'},
+          //{visibleName: 'Population', name: 'population', css: 'glyphicon glyphicon-cutlery'},
           {visibleName: 'Production', name: 'production', css: 'glyphicon glyphicon-wrench'},
-          {visibleName: 'Religion', name: 'religion', css: 'glyphicon glyphicon-tent'},
-          {visibleName: 'Research', name: 'research', css: 'glyphicon glyphicon-search'},
-          {visibleName: 'Options', name: 'options', css: 'glyphicon glyphicon-cog'},
+          //{visibleName: 'Religion', name: 'religion', css: 'glyphicon glyphicon-tent'},
+          //{visibleName: 'Research', name: 'research', css: 'glyphicon glyphicon-search'},
+          //{visibleName: 'Options', name: 'options', css: 'glyphicon glyphicon-cog'},
         ]
 
         function isTabActive(tab) {

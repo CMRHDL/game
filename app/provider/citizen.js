@@ -21,7 +21,6 @@
         }
       }
       citArr = tempArr;
-      console.log(citArr.length);
     };
 
     function Citizen(id, age, season, education, religion, happyness) {
