@@ -93,11 +93,16 @@
     }
 
     function getCount(prop) {
-      var counter = {};
-      all.citizens.forEach(function(entry){
-        counter[entry[prop]] = counter[entry[prop]] ? counter[entry[prop]] + 1 : 1;
-      });
-      return counter;
+      // var counter = {};
+      // all.citizens.forEach(function(entry){
+      //   counter[entry[prop]] = counter[entry[prop]] + 1 || 1;
+      // });
+      // return counter;
+      return all.citizens.reduce(function(obj, curVal){
+        obj[curVal[prop]] = obj[curVal[prop]] + 1 || 1;
+        console.log(obj);
+        return obj;
+      }, {});
     }
 
     function getAvgAge() {
